@@ -29,7 +29,7 @@
 
 <script>
 	var app = getApp();
-	import itemCell from "../../commponent/setting/item-cell";
+	
 	export default {
 		data() {
 			return {
@@ -50,7 +50,6 @@
 			};
 		},
 		components: {
-			itemCell
 		},
 		props: {},
 

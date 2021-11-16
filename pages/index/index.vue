@@ -135,65 +135,73 @@
 					scrollTop: 0
 				},
 				pixelRatio: 1,
-				pixelRatio: 1,
 				// 词云图
 				cyData: {
 					"series": [{
-						"name": "Vue.js",
+						"name": "乐子、",
 						"textSize": 28
 					}, {
-						"name": "JavaScript",
+						"name": "侃生活",
 						"textSize": 30
 					}, {
-						"name": "微信小程序",
+						"name": "乐子工具箱",
 						"textSize": 20
 					}, {
-						"name": "支付宝小程序",
+						"name": "生活",
 						"textSize": 20
 					}, {
-						"name": "头条小程序",
+						"name": "出舱",
 						"textSize": 20
 					}, {
-						"name": "抖音小程序",
+						"name": "乐子侃生活",
 						"textSize": 25
 					}, {
 						"name": "App开发",
 						"textSize": 30
 					}]
 				},
-				bannerList: [{
-						imageUrl: 'https://cdn.zhoukaiwen.com/zjx_banner.png'
-					},
+				bannerList: [
 					{
-						imageUrl: 'https://cdn.zhoukaiwen.com/zjx_banner3.png'
+						imageUrl: 'https://rdtalk.cn/img/zyxc2.png'
+					},{
+						imageUrl: 'https://rdtalk.cn/img/zyxc1.png'
 					},
-					{
-						imageUrl: 'https://cdn.zhoukaiwen.com/zjx_banner1.png'
-					},
-					{
-						imageUrl: 'https://cdn.zhoukaiwen.com/zjx_banner2.png'
-					}
+					
+					// {
+					// 	imageUrl: 'https://cdn.zhoukaiwen.com/zjx_banner1.png'
+					// },
+					// {
+					// 	imageUrl: 'https://cdn.zhoukaiwen.com/zjx_banner2.png'
+					// }
 				],
 				tools: [{
 						cuIcon: 'location',
 						color: 'red',
 						badge: 0,
-						count:0,
+						count: 0,
 						mid: '1',
 						name: 'IP查询'
 					},
 					{
-							cuIcon: 'phone',
-							color: 'orange',
-							badge: 0,
-							count:0,
-							mid: '2',
-							name: '手机号查询'
-						},
+						cuIcon: 'phone',
+						color: 'orange',
+						badge: 0,
+						count: 0,
+						mid: '2',
+						name: '手机号查询'
+					},
+					{
+						cuIcon: 'cardboardforbid',
+						color: 'orange',
+						badge: 0,
+						count: 0,
+						mid: '7',
+						name: '身份证查询'
+					},
 					{
 						cuIcon: 'colorlens',
 						color: 'yellow',
-						count:0,
+						count: 0,
 						badge: 0,
 						mid: '3',
 						name: '壁纸分享'
@@ -201,7 +209,7 @@
 					{
 						cuIcon: 'discover',
 						color: 'green',
-						count:0,
+						count: 0,
 						badge: 0,
 						mid: '4',
 						name: '天气指数'
@@ -210,19 +218,27 @@
 						cuIcon: 'play_forward_fill',
 						color: 'blue',
 						badge: 0,
-						count:0,
+						count: 0,
 						mid: '5',
-						name: '影音工具'
+						name: '影音娱乐'
 					},
 					{
 						cuIcon: 'coin',
 						color: 'purple',
-						count:0,
+						count: 0,
 						badge: 0,
 						mid: '6',
 						name: '房贷计算器'
 					},
-					
+					{
+						cuIcon: 'appreciatefill',
+						color: 'purple',
+						count: 0,
+						badge: 0,
+						mid: '8',
+						name: '火星文转换'
+					},
+
 				],
 				curriculum: [{
 						name: 'uniapp项目开发',
@@ -255,7 +271,6 @@
 			_self = this;
 			this.cWidth = uni.upx2px(750);
 			this.cHeight = uni.upx2px(420);
-			console.log("lele",_self.cyData.series)
 			this.getServerData();
 		},
 		// onLoad() {
@@ -274,7 +289,7 @@
 				canvaWord = new uCharts({
 					// $this: _self,
 					// canvasId: canvasId,
-					context:uni.createCanvasContext(canvasId,_self),
+					context: uni.createCanvasContext(canvasId, _self),
 					type: 'word',
 					background: '#ffffff',
 					pixelRatio: _self.pixelRatio,
@@ -288,22 +303,42 @@
 					}
 				});
 			},
-			getData() {
+			async getData() {
 				console.log('数据加载');
-				let opts = {
-					url: 'json/project.json',
-					method: 'get'
-				};
-				uni.showLoading({
-					title: '加载中'
-				});
-				request.httpRequest(opts).then(res => {
-					console.log(res);
-					uni.hideLoading();
-					if (res.statusCode == 200) {
-						this.projectList = res.data.data;
-					} else {}
-				});
+				// let opts = {
+				// 	url: 'json/project.json',
+				// 	method: 'get'
+				// };
+				// uni.showLoading({
+				// 	title: '加载中'
+				// });
+				// request.httpRequest(opts).then(res => {
+				// 	console.log(res);
+				// 	uni.hideLoading();
+				// 	if (res.statusCode == 200) {
+				// 		this.projectList = res.data.data;
+				// 	} else {}
+				// });
+				await this.$http
+					.get('/weixin/v1/api/wx/tool/getHotSearchWordcloud', {})
+					.then(async r => {
+						console.log(r.data);
+						this.cyData.series=[];
+						r.data.forEach(item => {
+							if(this.cyData.series.length<11){
+							this.cyData.series.push({
+								"name": item.keyword,
+								"textSize": item.size/5000
+							});
+							}
+						});
+						console.log(this.cyData.series);
+						_self.showData("canvasData", this.Data);
+					})
+					.catch(err => {
+
+					});
+
 			},
 			scroll: function(e) {
 				console.log(e);
@@ -311,6 +346,32 @@
 			},
 			goTool: function(e) {
 				console.log(e.currentTarget.dataset.mid)
+				if (e.currentTarget.dataset.mid == 1) {
+					uni.navigateTo({
+						url: '../tools/ip'
+					});
+				}
+
+				if (e.currentTarget.dataset.mid == 2) {
+					uni.navigateTo({
+						url: '../tools/mobile'
+					});
+				}
+				if (e.currentTarget.dataset.mid == 6) {
+					uni.navigateTo({
+						url: '../tools/house'
+					});
+				}
+				if (e.currentTarget.dataset.mid == 7) {
+					uni.navigateTo({
+						url: '../tools/idcard'
+					});
+				}
+				if (e.currentTarget.dataset.mid == 8) {
+					uni.navigateTo({
+						url: '../tools/font'
+					});
+				}
 				// if (e.currentTarget.dataset.mid == 1 || e.currentTarget.dataset.mid == 2) {
 				// 	uni.navigateTo({
 				// 		url: '../timeline?mid=' + e.currentTarget.dataset.mid

@@ -168,13 +168,14 @@
 					</button>
 				</view>
 
-				<view class="cu-item" @click="callPhoneNumber" data-number="18629591093">
+				<!-- <view class="cu-item" @click="callPhoneNumber" data-number="13230868695"> -->
+				<view class="cu-item" >
 					<view class='content'>
 						<image src='../../static/me/icon/dengta.png' class='png' mode='aspectFit'></image>
 						<text class='text-lg margin-sm'>技术支持</text>
 					</view>
 					<view class="action">
-						<view class="cu-tag round bg-blue light">186 2959 1093</view>
+						<view class="cu-tag round bg-blue light">乐子侃生活</view>
 					</view>
 				</view>
 

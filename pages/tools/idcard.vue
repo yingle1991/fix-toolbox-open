@@ -4,14 +4,15 @@
 		<view class="t_input">
 			<view class="title">身份证号</view>
 			<view class="inputs">
-				<input v-model="idcard" placeholder="例如: 430421187609233453" placeholder-style="font-size: 28upx; color: #999"></input>
+				<input v-model="idcard" placeholder="例如: 430421187609233453"
+					placeholder-style="font-size: 28upx; color: #999"></input>
 			</view>
 			<view class="all_btn"></view>
 		</view>
 		<view class="result" v-show="showDetail">
 			<view class="title">详细信息</view>
 			<u-form ref="uForm" :label-width="120">
-				<u-form-item label="地区:">{{info.area}}</u-form-item>
+				<u-form-item label="地区:">{{info.region}}</u-form-item>
 				<u-form-item label="性别:">{{info.gender}}</u-form-item>
 				<u-form-item label="生日:">{{info.birthday}}</u-form-item>
 				<u-form-item label="星座:">{{info.constellation}}</u-form-item>
@@ -28,7 +29,7 @@
 
 <script>
 	var app = getApp();
-	import itemCell from "../../commponent/setting/item-cell";
+
 	export default {
 		data() {
 			return {
@@ -40,7 +41,7 @@
 			};
 		},
 		components: {
-			itemCell
+
 		},
 		props: {},
 
@@ -48,9 +49,8 @@
 		 * 生命周期函数--监听页面加载
 		 */
 		onLoad: function(options) {
-			this.setData({
-				colors: app.globalData.newColor
-			});
+				this.colors= app.globalData.newColor;
+
 		},
 
 		/**
@@ -88,35 +88,38 @@
 		 */
 		onShareAppMessage: function() {},
 		methods: {
-			query(){
-				if(!this.idcard){
+			async query() {
+				if (!this.idcard) {
 					this.$refs.uToast.show({
 						title: '身份证号不能为空',
 						type: 'error'
 					})
 					return;
 				}
-				if(!this.$u.test.idCard(this.idcard)){
+				if (!this.$u.test.idCard(this.idcard)) {
 					this.$refs.uToast.show({
 						title: '身份证号不正确',
 						type: 'error'
 					})
 					return;
 				}
-				this.request('/v1/api/idcard/' + this.idcard, {}, 'GET').then(res=>{
-					if(res.code == 200){
-						this.setData({
-							empty: false,
-							showDetail: true,
-							info: res.data
-						});
-					} else {
-						this.setData({
-						  empty: true,
-						  showDetail: false,
-						});
-					}
-				})
+				await this.$http
+					.get('/weixin/v1/api/wx/tool/idCard/' + this.idcard, {}).then(async res => {
+						this.empty = false;
+						this.showDetail = true;
+						this.info = res.data;
+					})
+					.catch(err => {
+						this.empty = true;
+						this.showDetail = false;
+						uni.hideLoading();
+
+						// this.loading = false;
+						// if (type === 'refresh') {
+						// 	uni.stopPullDownRefresh();
+						// }
+					});
+
 			}
 		}
 	};
@@ -125,16 +128,19 @@
 	page {
 		background-color: #F5F5FA;
 	}
-	.result{
+
+	.result {
 		padding: 0 4%;
 		margin-top: 20upx;
 		background-color: #ffffff;
 	}
-	.result .title{
+
+	.result .title {
 		padding: 30upx 0 20upx 0;
 		font-size: 30upx;
 		font-weight: bold;
 	}
+
 	.t_input {
 		padding: 20upx 4%;
 		background-color: #fff;

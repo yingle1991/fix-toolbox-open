@@ -1,0 +1,24 @@
+{
+  "pages": [
+    "pages/index/tabbar",
+    "pages/tools/ip",
+    "pages/tools/electric",
+    "pages/tools/font",
+    "pages/tools/mobile",
+    "pages/tools/idcard",
+    "pages/tools/house",
+    "pages/tools/bank",
+    "pages/me/aboutMe"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

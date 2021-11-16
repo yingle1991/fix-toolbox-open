@@ -17,7 +17,7 @@
 				</u-form-item>
 				<u-form-item label="卡片类型:">{{info.cardType}}</u-form-item>
 				<u-form-item label="官网站点:">{{info.site}}</u-form-item>
-				<u-form-item label="联系方式:">{{info.bankMobile}}</u-form-item>
+			<!-- 	<u-form-item label="联系方式:">{{info.bankMobile}}</u-form-item> -->
 			</u-form>
 		</view>
 		<u-empty style="margin-top: 80upx;" v-show="empty" text="暂无手机信息" mode="list"></u-empty>
@@ -30,7 +30,7 @@
 
 <script>
 	var app = getApp();
-	import itemCell from "../../commponent/setting/item-cell";
+	import bankData from '@/common/bankData.js';
 	export default {
 		data() {
 			return {
@@ -42,7 +42,6 @@
 			};
 		},
 		components: {
-			itemCell
 		},
 		props: {},
 
@@ -98,20 +97,25 @@
 					})
 					return;
 				}
-				this.request('/v1/api/bank/' + this.bankNo, {}, 'GET').then(res=>{
-					if(res.code == 200){
-						this.setData({
-							empty: false,
-							showDetail: true,
-							info: res.data
-						});
-					} else {
-						this.setData({
-						  empty: true,
-						  showDetail: false,
-						});
-					}
-				})
+				// this.info=bankData.getBankInfoByCardNo(this.bankNo);
+				console.log(this.info);
+				this.info.logo=bankData.bankCodeToLogo("BGB")
+				this.showDetail=true;
+				this.empty=false;
+				// this.request('/v1/api/bank/' + this.bankNo, {}, 'GET').then(res=>{
+				// 	if(res.code == 200){
+				// 		this.setData({
+				// 			empty: false,
+				// 			showDetail: true,
+				// 			info: res.data
+				// 		});
+				// 	} else {
+				// 		this.setData({
+				// 		  empty: true,
+				// 		  showDetail: false,
+				// 		});
+				// 	}
+				// })
 			}
 		}
 	};

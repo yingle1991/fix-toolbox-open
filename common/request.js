@@ -1,6 +1,7 @@
 
 // const baseUrl = 'https://cdn.zhoukaiwen.com/';
-const baseUrl = 'https://www.zhoukaiwen.com/';
+// const baseUrl = 'https://www.rdtalk.com/';
+const baseUrl='http://localhost:18080/'
 
 
 // 不带token请求

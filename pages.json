@@ -1,4 +1,7 @@
 {
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/tabbar",
@@ -6,6 +9,62 @@
 				"navigationBarTitleText": "乐子工具包",
 				"navigationStyle": "custom"
 			}
+		},
+		{
+		    "path" : "pages/tools/ip",
+		    "style" : {
+		        "navigationBarTitleText" : "IP地址查询",
+				"navigationBarBackgroundColor":"#F8F8F8"
+		    }
+		},
+		{
+		    "path" : "pages/tools/electric",
+		    "style" : {
+		        "navigationBarTitleText" : "电费计算器",
+				"navigationBarBackgroundColor":"#F8F8F8"
+		    }
+		},
+		{
+		    "path" : "pages/tools/font",
+		    "style" : {
+		        "navigationBarTitleText" : "简繁转换",
+				"navigationBarBackgroundColor":"#F8F8F8"
+		    }
+		},
+		{
+		    "path" : "pages/tools/mobile",
+		    "style" : {
+		        "navigationBarTitleText" : "手机号码查询",
+				"navigationBarBackgroundColor":"#F8F8F8"
+		    }
+		},
+		{
+		    "path" : "pages/tools/idcard",
+		    "style" : {
+		        "navigationBarTitleText" : "",
+				"navigationBarBackgroundColor":"#F8F8F8"
+		    }
+		},
+		{
+		    "path" : "pages/tools/house",
+		    "style" : {
+		        "navigationBarTitleText" : "房贷计算器",
+				"navigationBarBackgroundColor":"#F8F8F8"
+		    }
+		},
+		{
+		    "path" : "pages/tools/bank",
+		    "style" : {
+		        "navigationBarTitleText" : "银行卡查询",
+				"navigationBarBackgroundColor":"#F8F8F8"
+		    }
+		},
+		{
+		    "path" : "pages/me/aboutMe",
+		    "style": {
+		    	"navigationBarTitleText": "关于我",
+		    	"navigationStyle": "custom"
+		    }
 		}
 	],
 	"globalStyle": {

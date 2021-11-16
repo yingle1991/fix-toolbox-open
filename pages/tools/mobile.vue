@@ -27,7 +27,7 @@
 
 <script>
 	var app = getApp();
-	import itemCell from "../../commponent/setting/item-cell";
+
 	export default {
 		data() {
 			return {
@@ -39,7 +39,6 @@
 			};
 		},
 		components: {
-			itemCell
 		},
 		props: {},
 
@@ -47,9 +46,8 @@
 		 * 生命周期函数--监听页面加载
 		 */
 		onLoad: function(options) {
-			this.setData({
-				colors: app.globalData.newColor
-			});
+			
+				this.colors=app.globalData.newColor
 		},
 
 		/**
@@ -91,7 +89,7 @@
 			    var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
 			    return reg.test(ip);
 			},
-			query(){
+			async query(){
 				if(!this.mobile){
 					this.$refs.uToast.show({
 						title: '手机号不能为空',
@@ -106,23 +104,32 @@
 					})
 					return;
 				}
-				this.request('/v1/api/mobile/' + this.mobile, {}, 'GET').then(res=>{
+				await this.$http
+					.get('/weixin/v1/api/wx/tool/mobile/' + this.mobile, {}).then(res=>{
 					if(res.code == 200){
-						let array = res.data.phoneArea.split('-');
-						this.setData({
-							empty: false,
-							showDetail: true,
-							info: {
-								province: array[0],
-								city: array[1],
-								biz: array[2]
-							} 
-						});
+						// let array = res.data.phoneArea.split('-');
+						console.log(res.data)
+						this.empty=false;
+						this.showDetail=true;
+						this.info.province=res.data.province;
+						this.info.city=res.data.city;
+						this.info.biz=res.data.operator;
+						// this.setData({
+						// 	empty: false,
+						// 	showDetail: true,
+						// 	info: {
+						// 		province: array[0],
+						// 		city: array[1],
+						// 		biz: array[2]
+						// 	} 
+						// });
 					} else {
-						this.setData({
-						  empty: true,
-						  showDetail: false,
-						});
+						this.empty=true;
+						this.showDetail=false;
+						// this.setData({
+						//   empty: true,
+						//   showDetail: false,
+						// });
 					}
 				})
 			}

@@ -216,12 +216,11 @@
 				let item = this.rateList[i];
 				rateMap[item.value] = item.label;
 			}
-			this.setData({
-				colors: app.globalData.newColor,
-				periodList: periodList,
-				periodMap: periodMap,
-				rateMap: rateMap
-			});
+			this.colors= app.globalData.newColor;
+			this.periodList= periodList;
+			this.periodMap= periodMap;
+			this.rateMap= rateMap;
+			
 
 		},
 
@@ -261,10 +260,9 @@
 		onShareAppMessage: function() {},
 		methods: {
 			changeResultType(type){
-				this.setData({
-					type: type,
-					reslut: type == 0 ? this.groupResult["bx"] : this.groupResult["bj"]
-				});
+				this.type=type;
+				this.reslut=== 0 ? this.groupResult["bx"] : this.groupResult["bj"];
+				
 			},
 			resultDetail(){
 				if(this.type == 0){
@@ -274,9 +272,8 @@
 					})
 					return;
 				}
-				this.setData({
-					showResultList: true
-				});
+				this.showResultList=true;
+				
 			},
 			calc(){
 				if(this.current == 2){
@@ -340,11 +337,9 @@
 					}
 					groupResult["bx"] = reslut;
 				}
-				this.setData({
-					groupResult: groupResult,
-					listAmount: listAmount,
-					reslut: this.type == '0' ? groupResult["bx"]: groupResult["bj"]
-				})
+				this.groupResult= groupResult;
+				this.listAmount= listAmount;
+				this.reslut= this.type == '0' ? groupResult["bx"]: groupResult["bj"];
 			},
 			calcGroup(){
 				//贷款总额
@@ -403,11 +398,10 @@
 				  }
 				  groupResult["bx"] = reslut1;
 				  
-				  this.setData({
-				  	groupResult: groupResult,
-				  	listAmount: listAmount,
-				  	reslut: this.type == '0' ? groupResult["bx"]: groupResult["bj"]
-				  })
+				  this.groupResult=groupResult;
+				  this.listAmount=listAmount;
+				  this.reslut=this.type == '0' ? groupResult["bx"]: groupResult["bj"];
+				
 			},
 			//本息还款的月还款额(参数: 年利率/贷款总额/贷款总月份)
 			getMonthMoney1(lilv, total, month){
@@ -425,72 +419,57 @@
 				this.reset();
 			},
 			reset(){
-				this.setData({
-					type: "0",
-					amount: undefined,
-					gjjAmount: undefined,
-					period: 20,
-					rate: "0.049",
-					gjjRate: "0.0325",
-					customeRate: undefined,
-					customeType: undefined,
-					reslut: {
-						monthAmount: 0,
-						totalAmount: 0,
-						totalReturnAmount: 0,
-						rateAmount: 0,
-					},
-					groupResult: {}
-				})
+				this.type="0";
+				this.amount= undefined;
+				this.gjjAmount= undefined;
+				this.period= 20;
+				this.rate= "0.049";
+				this.gjjRate="0.0325";
+				this.customeRate= undefined;
+				this.customeType= undefined;
+				this.reslut= {
+					monthAmount: 0,
+					totalAmount: 0,
+					totalReturnAmount: 0,
+					rateAmount: 0,
+				};
+				this.groupResult={};
+				
 			},
 			changeType() {
-				this.setData({
-					showType: true
-				})
+				this.showType=true;
+				
 			},
 			typeConfirm(e) {
-				this.setData({
-					type: e[0].value
-				})
+				this.type= e[0].value;
+				
 			},
 			periodConfirm(e) {
-				this.setData({
-					period: e[0].value
-				})
+				this.period=e[0].value;
+				
 			},
 			rateConfirm(e) {
 				if (e[0].value == "0") {
-					this.setData({
-						showCustomeRate: true,
-						customeType: 0
-					})
+					this.showCustomeRate=true;
+					this.customeType= 0;
 					return
 				}
-				this.setData({
-					rate: e[0].value
-				})
+				this.rate= e[0].value;
+				
 			},
 			gjjRateConfirm(e) {
 				if (e[0].value == "0") {
-					this.setData({
-						showCustomeRate: true,
-						customeType: 1
-					})
+					this.showCustomeRate= true;
+					this.customeType= 1;
 					return
 				}
-				this.setData({
-					gjjRate: e[0].value
-				})
+				this.gjjRate= e[0].value;
 			},
 			customeConfirm() {
 				if (this.customeType == 0) {
-					this.setData({
-						rate: Number(this.customeRate) / 100
-					})
+					this.rate=Number(this.customeRate) / 100;
 				} else {
-					this.setData({
-						gjjRate: Number(this.customeRate) / 100
-					})
+					this.gjjRate= Number(this.customeRate) / 100;
 				}
 
 			},

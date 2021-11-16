@@ -24,19 +24,19 @@
 					<view :class="PageCur=='search'?'color_main':'text-gray'">技术栈</view>
 				</view>
 
-				<view @click="NavChange" class="action text-gray add-action" data-cur="cases">
+			<!-- 	<view @click="NavChange" class="action text-gray add-action" data-cur="cases">
 					<image class="logo_btn" mode="widthFix" src="../../static/logo.png"></image>
 					<view :class="PageCur=='cases'?'color_main':'text-gray'">组件模板</view>
-				</view>
+				</view> -->
 
-				<view class="action" @click="NavChange" data-cur="news">
+			<!-- 	<view class="action" @click="NavChange" data-cur="news">
 					<view class='cuIcon-cu-image'>
 						<view class="cu-tag badge">{{message}}</view>
 						<image v-if="PageCur=='news'" src="../../static/tabBar/order_cur.png"></image>
 						<image v-if="PageCur != 'news'" src="../../static/tabBar/order.png"></image>
 					</view>
 					<view :class="PageCur=='news'?'color_main':'text-gray'">文章资讯</view>
-				</view>
+				</view> -->
 
 				<view class="action" @click="NavChange" data-cur="me">
 					<view class='cuIcon-cu-image'>

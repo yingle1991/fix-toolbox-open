@@ -1,13 +1,14 @@
-# Fix UNIAPP 工具箱 开源学习小程序
+# Fix　乐子工具箱 开源学习小程序
 
-
-基于uni-app、colorUi，支持小程序、H5、Android和IOS
+基于uni-app、colorUi，支持小程序、H5、Android和IOS,搭建基础，拿来可用的小程序，方便各位开发小主学习借鉴！！！
 
 ```
 🕙 项目基本保持每日更新，右上随手点个 🌟 Star 关注，这样才有持续下去的动力，谢谢～
 ```
 
 ### 扫码体验
+
+![](https://gitee.com/yingle1991/resource/raw/master/2021-11-14/1636897392522-gh_c361e5dc1a4a_258.jpg)
 
 ### 项目说明
 
@@ -17,6 +18,8 @@
 本软件属于技术开源软件, 任何使用本源码从事商业活动，对别人和自己造成损失的，本人概不负责！
 
 #### 功能规划
+
+
 
 #### 版本更新
 
@@ -51,10 +54,11 @@
 
 
 ### 交流群「Fix 乐子工具箱学习交流群」
-<p>一群人数已500人满，大家加群可扫码二群</p>
 
-<img src="https://zhoukaiwen.com/img/WechatIMG1320.jpeg" width="300px" />
-<img src="https://zhoukaiwen.com/img/WechatIMG1319.jpeg" width="300px" />
+<p>有想法或意见，大家加群可扫码进群</p>
+
+![](https://gitee.com/yingle1991/resource/raw/master/2021-11-14/1636895864668-image.png)
+
 </p>
 
 

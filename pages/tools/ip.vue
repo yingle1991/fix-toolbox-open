@@ -11,11 +11,11 @@
 		<view class="result" v-show="showDetail">
 			<view class="title">详细信息</view>
 			<u-form ref="uForm">
-				<u-form-item label="国家:">{{ipInfo.nation}}</u-form-item>
-				<u-form-item label="省份:">{{ipInfo.province}}</u-form-item>
+				<u-form-item label="国家:">{{ipInfo.country}}</u-form-item>
+				<u-form-item label="省份:">{{ipInfo.region}}</u-form-item>
 				<u-form-item label="城市:">{{ipInfo.city}}</u-form-item>
 				<u-form-item label="区域:">{{ipInfo.district}}</u-form-item>
-				<u-form-item label="地址:">{{ipInfo.address}}</u-form-item>
+				<u-form-item label="地址:">{{ipInfo.area}}</u-form-item>
 			</u-form>
 		</view>
 		<map v-if="showDetail" :markers="markers" scale="14" :latitude="ipInfo.lat" :longitude="ipInfo.lng" ref="map1" style="width: 100%; height: 500upx; margin-bottom: 200upx;"></map>
@@ -29,7 +29,6 @@
 
 <script>
 	var app = getApp();
-	import itemCell from "../../commponent/setting/item-cell";
 	export default {
 		data() {
 			return {
@@ -45,7 +44,6 @@
 			};
 		},
 		components: {
-			itemCell
 		},
 		props: {},
 
@@ -53,9 +51,7 @@
 		 * 生命周期函数--监听页面加载
 		 */
 		onLoad: function(options) {
-			this.setData({
-				colors: app.globalData.newColor
-			});
+				this.colors= app.globalData.newColor
 		},
 
 		/**
@@ -97,7 +93,7 @@
 			    var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
 			    return reg.test(ip);
 			},
-			query(){
+			async query(){
 				
 				// this.$refs.map1.moveToLocation({
 				// 	longitude: 120.296608,
@@ -120,28 +116,36 @@
 					})
 					return;
 				}
-				this.request('/v1/api/ip', {ip: this.ip}, 'GET').then(res=>{
-					if(res.code == 200){
+				console.log("靳查询");
+				var url="/weixin/v1/api/wx/tool/IP/";
+				await this.$http
+					.get(`${url}`+this.ip, {})
+					.then(async r => {
+						uni.hideLoading();
+						console.log(r.data);
 						let mark = {
-							latitude: res.data.lat, //纬度
-							longitude: res.data.lng, //经度
+							latitude: r.data.lat, //纬度
+							longitude: r.data.lng, //经度
 							iconPath: '../../../static/images/tools/weizhi.png', //显示的图标	
 							height: 40,
 							width: 40
 						}
-						this.setData({
-							empty: false,
-							showDetail: true,
-							ipInfo: res.data,
-							markers: [mark]
-						});
-					} else {
-						this.setData({
-						  empty: true,
-						  showDetail: false,
-						});
-					}
-				})
+						this.empty=false;
+						this.showDetail=true;
+						this.ipInfo=r.data;
+						this.markers=[mark];
+					})
+					.catch(err => {
+						this.empty=true;
+						this.showDetail=false;
+						uni.hideLoading();
+				
+						// this.loading = false;
+						// if (type === 'refresh') {
+						// 	uni.stopPullDownRefresh();
+						// }
+					});
+				
 			}
 		}
 	};
