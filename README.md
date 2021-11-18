@@ -10,14 +10,10 @@
 
 ![](https://gitee.com/yingle1991/resource/raw/master/2021-11-14/1636897392522-gh_c361e5dc1a4a_258.jpg)
 
-![](static/screenshot/461637247349_.pic.jpg)
-![](static/screenshot/471637247350_.pic.jpg)
-![](static/screenshot/481637247350_.pic.jpg)
-![](static/screenshot/491637247351_.pic.jpg)
-![](static/screenshot/501637247351_.pic.jpg)
-![](static/screenshot/511637247351_.pic.jpg)
-![](static/screenshot/521637247351_.pic.jpg)
-![](static/screenshot/521637247351_.pic.jpg)
+![](static/screenshot/screen-1.png)
+![](static/screenshot/screen-2.png)
+![](static/screenshot/screen-3.png)
+
 
 ### 项目说明
 
