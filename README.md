@@ -10,7 +10,14 @@
 
 ![](https://gitee.com/yingle1991/resource/raw/master/2021-11-14/1636897392522-gh_c361e5dc1a4a_258.jpg)
 
-![](./static/scrrenshot/461637247349_.pic.jpg)
+![](https://gitee.com/yingle1991/fix-toolbox-open/blob/master/static/screenshot/461637247349_.pic.jpg)
+![](https://gitee.com/yingle1991/fix-toolbox-open/blob/master/static/screenshot/471637247350_.pic.jpg)
+![](https://gitee.com/yingle1991/fix-toolbox-open/blob/master/static/screenshot/481637247350_.pic.jpg)
+![](https://gitee.com/yingle1991/fix-toolbox-open/blob/master/static/screenshot/491637247351_.pic.jpg)
+![](https://gitee.com/yingle1991/fix-toolbox-open/blob/master/static/screenshot/501637247351_.pic.jpg)
+![](https://gitee.com/yingle1991/fix-toolbox-open/blob/master/static/screenshot/511637247351_.pic.jpg)
+![](https://gitee.com/yingle1991/fix-toolbox-open/blob/master/static/screenshot/521637247351_.pic.jpg)
+![](https://gitee.com/yingle1991/fix-toolbox-open/blob/master/static/screenshot/531637247352_.pic.jpg)
 
 ### 项目说明
 
