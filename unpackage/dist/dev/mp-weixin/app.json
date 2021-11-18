@@ -1,6 +1,15 @@
 {
   "pages": [
-    "pages/index/tabbar"
+    "pages/index/tabbar",
+    "pages/tools/ip",
+    "pages/tools/electric",
+    "pages/tools/oil",
+    "pages/tools/font",
+    "pages/tools/mobile",
+    "pages/tools/idcard",
+    "pages/tools/house",
+    "pages/tools/bank",
+    "pages/me/aboutMe"
   ],
   "subPackages": [],
   "window": {
@@ -8,6 +17,11 @@
     "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取用户位置，获取地图定位功能"
+    }
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"

@@ -1,6 +1,6 @@
 import QQMapWX from "./qqmap-wx-jssdk.js";
 import AmapWX from './amap-wx.js'
-var amapKey="83dd75107efbb10605ef3f89c4f76527";
+var amapKey="f72ddf064e5a170d6dcd8fed343d431b";
 /** 
  * 此方法为腾讯位置服务方法  日调用量1万次/key,并发数5次/key/秒
  * @param {Object} location
@@ -8,7 +8,7 @@ var amapKey="83dd75107efbb10605ef3f89c4f76527";
  */
 function tencentGeocode(lat, lon, callback) {
 	const qqmapsdk = new QQMapWX({
-		key: "SQYBZ-GEGRF-7YJJL-JCRZJ-BYD32-2XBZV" //自己申请的key
+		key: "ZL4BZ-W4FLW-SPSRW-RBX3F-WV322-QVFZN" //自己申请的key
 	});
 	let location = {
 		latitude: lat,
@@ -17,9 +17,11 @@ function tencentGeocode(lat, lon, callback) {
 	qqmapsdk.reverseGeocoder({
 		location: location,
 		success(addressRes) {
-			let address = addressRes.result.address
-			callback(address)
-			console.log('腾讯->', address)
+			let address = addressRes.result.address;
+			let province=addressRes.result.address_component.province;
+			let city=addressRes.result.address_component.city;
+			callback(address,province,city)
+			console.log('腾讯->', addressRes.result)
 		},
 		fail(res) {
 			console.log('失败', res)
@@ -60,7 +62,7 @@ function getPoiAround(lat, lon,keywords,callback) {
  */
 function amapGeocode(lat, lon, callback) {
 	const amapPlugin = new AmapWX.AMapWX({
-		key: "83dd75107efbb10605ef3f89c4f76527"
+		key: amapKey
 	});
 	let location = '' + lon + ',' + lat + '';
 	amapPlugin.getRegeo({
@@ -69,7 +71,7 @@ function amapGeocode(lat, lon, callback) {
 		success: function(data) {
 			let address = data[0].name + data[0].desc
 			callback(address)
-			// console.log("高德->", address)
+			console.log("高德->", address)
 		},
 		fail: function(info) {
 			//失败回调

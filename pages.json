@@ -25,6 +25,13 @@
 		    }
 		},
 		{
+		    "path" : "pages/tools/oil",
+		    "style" : {
+		        "navigationBarTitleText" : "油价查询",
+				"navigationBarBackgroundColor":"#F8F8F8"
+		    }
+		},
+		{
 		    "path" : "pages/tools/font",
 		    "style" : {
 		        "navigationBarTitleText" : "简繁转换",

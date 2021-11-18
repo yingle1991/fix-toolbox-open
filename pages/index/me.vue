@@ -415,7 +415,6 @@
 		background-position: center;
 		vertical-align: middle;
 		font-size: 1.5em;
-		z-index: 99;
 	}
 
 	.name {

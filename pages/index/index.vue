@@ -238,6 +238,14 @@
 						mid: '8',
 						name: '火星文转换'
 					},
+					{
+						cuIcon: 'appreciatefill',
+						color: 'purple',
+						count: 0,
+						badge: 0,
+						mid: '9',
+						name: '最新油价'
+					},
 
 				],
 				curriculum: [{
@@ -370,6 +378,11 @@
 				if (e.currentTarget.dataset.mid == 8) {
 					uni.navigateTo({
 						url: '../tools/font'
+					});
+				}
+				if (e.currentTarget.dataset.mid == 9) {
+					uni.navigateTo({
+						url: '../tools/oil'
 					});
 				}
 				// if (e.currentTarget.dataset.mid == 1 || e.currentTarget.dataset.mid == 2) {

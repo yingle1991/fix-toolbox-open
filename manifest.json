@@ -54,7 +54,12 @@
         "setting" : {
             "urlCheck" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "获取用户位置，获取地图定位功能"
+            }
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true
@@ -68,5 +73,14 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+    "h5" : {
+        "sdkConfigs" : {
+            "maps" : {
+                "qqmap" : {
+                    "key" : "ZL4BZ-W4FLW-SPSRW-RBX3F-WV322-QVFZN"
+                }
+            }
+        }
+    }
 }
