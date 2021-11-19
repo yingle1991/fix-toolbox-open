@@ -3,7 +3,7 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "index": "/pages/index/index",
-    "search": "/pages/index/search",
+    "search": "/pages/home/home",
     "cases": "/pages/index/main",
     "news": "/pages/index/news",
     "me": "/pages/index/me"

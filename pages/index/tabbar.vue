@@ -21,7 +21,7 @@
 						<image v-if="PageCur=='search'" src="../../static/tabBar/shop_cur.png"></image>
 						<image v-if="PageCur != 'search'" src="../../static/tabBar/shop.png"></image>
 					</view>
-					<view :class="PageCur=='search'?'color_main':'text-gray'">技术栈</view>
+					<view :class="PageCur=='search'?'color_main':'text-gray'">今日语句</view>
 				</view>
 
 			<!-- 	<view @click="NavChange" class="action text-gray add-action" data-cur="cases">
@@ -55,7 +55,7 @@
 
 <script>
 	import index from "./index.vue";	//首页
-	import search from "./search.vue";	//技术视频
+	import search from "../home/home.vue";	//技术视频
 	import cases from "./main.vue";	//宅家学
 	import news from "./news.vue";	//资讯
 	import me from "./me.vue";	//个人中心
