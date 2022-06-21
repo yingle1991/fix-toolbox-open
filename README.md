@@ -8,7 +8,7 @@
 
 ### 扫码体验
 
-![](https://gitee.com/yingle1991/resource/raw/master/2021-11-14/1636897392522-gh_c361e5dc1a4a_258.jpg)
+![](https://fastly.jsdelivr.net/gh/yingle1991/resources@main/api/blog/tec/index/gh_gryy.jpg)
 
 ![](static/screenshot/screen-1.png)
 ![](static/screenshot/screen-2.png)
@@ -24,13 +24,16 @@
 
 #### 功能规划
 
-
+##### 2022年 增加2048小游戏、小霸王游戏机、扫雷等经典小游戏
+##### 2022-06: 动态获取每日物语
 
 #### 版本更新
 
 ##### 2021-11-13: 初始化项目
 ##### 2021-11-18: 增加定位功能 返查详细地址功能；增加油价查询
 ##### 2021-11-19: 增加每日物语界面，美化界面 自动获取农历日期
+
+##### 2022-06-21: 由于产品定位，去掉油价查询，增加手持弹幕、测网速、亲戚计算器等工具
 
 
 #### 安装教程
